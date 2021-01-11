@@ -48,24 +48,12 @@ module Powerpoint
       @slides << Powerpoint::Slide::DescriptionPic.new(presentation: self, title: title, image_path: image_path, content: content)
     end
 
-    def add_ranking_slide(title, subtitle = nil, subtitle_2 = nil, logo ,images)
-      @slides << Powerpoint::Slide::Ranking.new(presentation: self, title: title, subtitle: subtitle, subtitle_2: subtitle_2, logo: logo, images: images)
+    def add_multiple_image_slide(title, subtitle = nil, subtitle_2 = nil, logo ,images)
+      @slides << Powerpoint::Slide::MultipleImage.new(presentation: self, title: title, subtitle: subtitle, subtitle_2: subtitle_2, logo: logo, images: images)
     end
 
     def add_image_slide(title, subtitle = nil,images)
       @slides << Powerpoint::Slide::Image.new(presentation: self, title: title, subtitle: subtitle)
-    end
-
-    def add_gallery_slide(title, subtitle = nil,images)
-      @slides << Powerpoint::Slide::Gallery.new(presentation: self, title: title, subtitle: subtitle)
-    end
-
-    def add_concept_slide(title, subtitle = nil,images)
-      @slides << Powerpoint::Slide::Concept.new(presentation: self, title: title, subtitle: subtitle)
-    end
-
-    def add_collage_slide(title, subtitle = nil,images)
-      @slides << Powerpoint::Slide::Collage.new(presentation: self, title: title, subtitle: subtitle)
     end
 
     def save(path)
