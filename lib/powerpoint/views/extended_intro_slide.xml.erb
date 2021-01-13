@@ -69,7 +69,7 @@
         </p:nvSpPr>
         <p:spPr>
           <a:xfrm>
-            <a:off x="1038200" y="1508200"/>
+            <a:off x="1038200" y="2508200"/>
             <a:ext cx="10515600" cy="325563"/>
           </a:xfrm>
         </p:spPr>
@@ -79,7 +79,7 @@
           <a:p>
             <a:pPr algn="l"/>
             <a:r>
-              <a:rPr lang="en-US" sz="1200"/>
+              <a:rPr lang="en-US"/>
               <a:t><%= subtitle %></a:t>
             </a:r>
             <a:endParaRPr lang="en-US"/>
@@ -103,7 +103,7 @@
         </p:nvSpPr>
         <p:spPr>
           <a:xfrm>
-            <a:off x="1038200" y="1508200"/>
+            <a:off x="38200" y="0"/>
             <a:ext cx="10515600" cy="325563"/>
           </a:xfrm>
         </p:spPr>
@@ -113,7 +113,7 @@
           <a:p>
             <a:pPr algn="l"/>
             <a:r>
-              <a:rPr lang="en-US" smtClean="0"/>
+              <a:rPr lang="en-US" sz="1200"/>
               <a:t><%= subtitle_2 %></a:t>
             </a:r>
             <a:endParaRPr lang="en-US"/>
@@ -147,7 +147,7 @@
           <a:p>
             <a:pPr algn="l"/>
             <a:r>
-              <a:rPr lang="en-US" smtClean="0"/>
+              <a:rPr lang="en-US" sz="1200"/>
               <a:t><%= Date.today %></a:t>
             </a:r>
             <a:endParaRPr lang="en-US"/>
@@ -181,19 +181,12 @@
             <a:fillRect/>
           </a:stretch>
         </p:blipFill>
-        <% if coords.any? %>
         <p:spPr>
           <a:xfrm>
-            <a:off x="<%= coords[:x].to_s %>" y="<%= coords[:y].to_s %>"/>
-            <a:ext cx="<%= coords[:cx].to_s %>" cy="<%= coords[:cy].to_s %>"/>
+            <a:off x="258200" y="458200"/>
+            <a:ext cx="625563" cy="625563"/>
           </a:xfrm>
-          <a:prstGeom prst="rect">
-            <a:avLst/>
-          </a:prstGeom>
         </p:spPr>
-        <% else %>
-        <p:spPr/>
-        <% end %>
       </p:pic>
       <p:pic>
         <p:nvPicPr>
@@ -202,7 +195,7 @@
             <a:picLocks noChangeAspect="1" noGrp="1"/>
           </p:cNvPicPr>
           <p:nvPr>
-            <p:ph idx="1"/>
+            <p:ph idx="2"/>
           </p:nvPr>
         </p:nvPicPr>
         <p:blipFill>
@@ -217,19 +210,12 @@
             <a:fillRect/>
           </a:stretch>
         </p:blipFill>
-        <% if coords.any? %>
         <p:spPr>
           <a:xfrm>
-            <a:off x="<%= coords[:x].to_s %>" y="<%= coords[:y].to_s %>"/>
-            <a:ext cx="<%= coords[:cx].to_s %>" cy="<%= coords[:cy].to_s %>"/>
+            <a:off x="258200" y="458200"/>
+            <a:ext cx="625563" cy="625563"/>
           </a:xfrm>
-          <a:prstGeom prst="rect">
-            <a:avLst/>
-          </a:prstGeom>
         </p:spPr>
-        <% else %>
-        <p:spPr/>
-        <% end %>
       </p:pic>
     </p:spTree>
     <p:extLst>
