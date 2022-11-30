@@ -16,66 +16,151 @@
         </a:xfrm>
       </p:grpSpPr>
       <% images.each_with_index do |image, index| %>
-      <p:sp>
-        <p:nvSpPr>
-          <p:cNvPr id="2" name="Title 1"/>
-          <p:cNvSpPr>
-            <a:spLocks noGrp="1"/>
-          </p:cNvSpPr>
-          <p:nvPr>
-            <p:ph type="title"/>
-          </p:nvPr>
-        </p:nvSpPr>
-        <p:spPr/>
-        <p:txBody>
-          <a:bodyPr/>
-          <a:lstStyle/>
-          <a:p>
-            <a:r>
-              <a:rPr dirty="0" lang="en-US" smtClean="0"/>
-              <a:t><%=  image['title'] %></a:t>
-            </a:r>
-            <a:endParaRPr dirty="0" lang="en-US"/>
-          </a:p>
-        </p:txBody>
-      </p:sp>
-      <p:pic>
-        <p:nvPicPr>
-          <p:cNvPr id="4" name="Content Placeholder 3"/>
-          <p:cNvPicPr>
-            <a:picLocks noChangeAspect="1" noGrp="1"/>
-          </p:cNvPicPr>
-          <p:nvPr>
-            <p:ph idx="1"/>
-          </p:nvPr>
-        </p:nvPicPr>
-        <p:blipFill>
-          <a:blip r:embed="rId2">
-            <a:extLst>
-              <a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
-                <a14:useLocalDpi val="0" xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main"/>
-              </a:ext>
-            </a:extLst>
-          </a:blip>
-          <a:stretch>
-            <a:fillRect/>
-          </a:stretch>
-        </p:blipFill>
-        <% if coords.any? %>
-        <p:spPr>
-          <a:xfrm>
-            <a:off x="<%= coords[:x].to_s %>" y="<%= coords[:y].to_s %>"/>
-            <a:ext cx="<%= coords[:cx].to_s %>" cy="<%= coords[:cy].to_s %>"/>
-          </a:xfrm>
-          <a:prstGeom prst="rect">
-            <a:avLst/>
-          </a:prstGeom>
-        </p:spPr>
-        <% else %>
-        <p:spPr/>
-        <% end %>
-      </p:pic>
-    <% end %>
+        <% if image[:type] == 'image' %>
+          <p:sp>
+            <p:nvSpPr>
+              <p:cNvPr id="2" name="Title 1"/>
+              <p:cNvSpPr>
+                <a:spLocks noGrp="1"/>
+              </p:cNvSpPr>
+              <p:nvPr>
+                <p:ph type="title"/>
+              </p:nvPr>
+            </p:nvSpPr>
+            <p:spPr/>
+            <% if image["title"].present?%>
+              <p:txBody>
+                <a:bodyPr/>
+                <a:lstStyle/>
+                <a:p>
+                  <a:r>
+                    <a:rPr dirty="0" lang="en-US" smtClean="0"/>
+                    <a:t><%=  image["title"] %></a:t>
+                  </a:r>
+                  <a:endParaRPr dirty="0" lang="en-US"/>
+                </a:p>
+              </p:txBody>
+            <%end%>
+          </p:sp>
+          <p:pic>
+            <p:nvPicPr>
+              <p:cNvPr id="4" name="Content Placeholder 3"/>
+              <p:cNvPicPr>
+                <a:picLocks noChangeAspect="1" noGrp="1"/>
+              </p:cNvPicPr>
+              <p:nvPr>
+                <p:ph idx="1"/>
+              </p:nvPr>
+            </p:nvPicPr>
+            <p:blipFill>
+              <a:blip r:embed="rId<%= 2 + index%>">
+                <a:extLst>
+                  <a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+                    <a14:useLocalDpi val="0" xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main"/>
+                  </a:ext>
+                </a:extLst>
+              </a:blip>
+              <a:stretch>
+                <a:fillRect/>
+              </a:stretch>
+            </p:blipFill>
+            <%if image[:coords].present? %>
+              <p:spPr>
+                <a:xfrm>
+                  <a:off x="<%= pixle_to_pt(image[:coords][:x]).to_s %>" y="<%= pixle_to_pt(image[:coords][:y]).to_s %>"/>
+                  <a:ext cx="<%= pixle_to_pt(image[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(image[:coords][:cy]).to_s %>"/>
+                </a:xfrm>
+                <a:prstGeom prst="rect">
+                  <a:avLst/>
+                </a:prstGeom>
+              </p:spPr>
+            <% elsif coords.any? && !image[:coords].present?%>
+              <p:spPr>
+                <a:xfrm>
+                  <a:off x="<%= coords[:x].to_s %>" y="<%= coords[:y].to_s %>"/>
+                  <a:ext cx="<%= coords[:cx].to_s %>" cy="<%= coords[:cy].to_s %>"/>
+                </a:xfrm>
+                <a:prstGeom prst="rect">
+                  <a:avLst/>
+                </a:prstGeom>
+              </p:spPr>
+            <% else %>
+            <p:spPr/>
+            <% end %>
+          </p:pic>
+        <%elsif image[:type] == 'title'%>
+          <p:sp>
+            <p:nvSpPr>
+              <p:cNvPr id="3" name="Subtitle 2"/>
+              <p:cNvSpPr>
+                <a:spLocks noGrp="1"/>
+              </p:cNvSpPr>
+              <p:nvPr>
+                <p:ph idx="1" type="subTitle"/>
+              </p:nvPr>
+            </p:nvSpPr>
+            <p:spPr/>
+            <p:txBody>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:r>
+                  <a:rPr lang="en-US" smtClean="0"/>
+                  <a:t><%= image[:content] %></a:t>
+                </a:r>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </p:txBody>
+          </p:sp>
+        <%elsif image[:type]== 'text'%>
+          <p:sp>
+            <p:nvSpPr>
+              <p:cNvPr id="5<%=index%>" />
+              <p:cNvSpPr txBox="1"/>
+              <p:nvPr/>
+            </p:nvSpPr>
+              <%if image[:coords].present? %>
+                <p:spPr>
+                  <a:xfrm>
+                    <a:off x="<%= pixle_to_pt(image[:coords][:x]).to_s %>" y="<%= pixle_to_pt(image[:coords][:y]).to_s %>"/>
+                    <a:ext cx="<%= pixle_to_pt(image[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(image[:coords][:cy]).to_s %>"/>
+                  </a:xfrm>
+                  <a:prstGeom prst="rect">
+                    <a:avLst/>
+                  </a:prstGeom>
+                </p:spPr>
+              <% else %>
+                <p:spPr>
+                  <a:xfrm>
+                    <a:off x="<%= pixle_to_pt(450).to_s %>" y="<%= pixle_to_pt(250).to_s %>"/>
+                    <a:ext cx="<%= pixle_to_pt(200).to_s %>" cy="<%= pixle_to_pt(200).to_s %>"/>
+                  </a:xfrm>
+                  <a:prstGeom prst="rect">
+                    <a:avLst/>
+                  </a:prstGeom>
+                </p:spPr>
+              <% end %>
+            <p:txBody>
+              <a:bodyPr wrap="square" rtlCol="0">
+                <a:spAutoFit/>
+              </a:bodyPr>
+              <a:lstStyle/>
+            <a:p>
+              <a:pPr algn="<%=image[:align].present? ? image[:align] == 'center' ? 'ctr' : image[:align] == 'right' ? 'r' : 'l' : 'ctr' %>"/>
+              <a:r>
+                <a:rPr dirty="0" b="<%=image[:bold] ? 1 : 0%>" i="<%=image[:italic] ? 1 : 0%>" lang="en-US" smtClean="0" sz="<%= image[:size].present? ? image[:size] * 100 : 1600%>">
+                <a:solidFill>
+                    <a:schemeClr val="dk2" />
+                  </a:solidFill>
+                  <a:latin typeface="<%=image[:font].present? ? image[:font] : 'Arial' %>" pitchFamily="2" charset="77"/>
+                </a:rPr>
+                <a:t><%= image[:content] %></a:t>
+              </a:r>
+            </a:p>
+            </p:txBody>
+          </p:sp>
+        <%end%>
+      <% end %>
     </p:spTree>
     <p:extLst>
       <p:ext uri="{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}">
