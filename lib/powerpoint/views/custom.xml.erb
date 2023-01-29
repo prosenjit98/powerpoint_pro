@@ -15,8 +15,8 @@
           <a:chExt cx="0" cy="0"/>
         </a:xfrm>
       </p:grpSpPr>
-      <% images.each_with_index do |image, index| %>
-        <% if image[:type] == 'image' %>
+      <% properties.each_with_index do |property, index| %>
+        <% if property[:type] == 'image' %>
           <p:sp>
             <p:nvSpPr>
               <p:cNvPr id="2" name="Title 1"/>
@@ -28,14 +28,14 @@
               </p:nvPr>
             </p:nvSpPr>
             <p:spPr/>
-            <% if image["title"].present?%>
+            <% if property["title"].present?%>
               <p:txBody>
                 <a:bodyPr/>
                 <a:lstStyle/>
                 <a:p>
                   <a:r>
                     <a:rPr dirty="0" lang="en-US" smtClean="0"/>
-                    <a:t><%=  image["title"] %></a:t>
+                    <a:t><%=  property["title"] %></a:t>
                   </a:r>
                   <a:endParaRPr dirty="0" lang="en-US"/>
                 </a:p>
@@ -64,17 +64,17 @@
                 <a:fillRect/>
               </a:stretch>
             </p:blipFill>
-            <%if image[:coords].present? %>
+            <%if property[:coords].present? %>
               <p:spPr>
                 <a:xfrm>
-                  <a:off x="<%= pixle_to_pt(image[:coords][:x]).to_s %>" y="<%= pixle_to_pt(image[:coords][:y]).to_s %>"/>
-                  <a:ext cx="<%= pixle_to_pt(image[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(image[:coords][:cy]).to_s %>"/>
+                  <a:off x="<%= pixle_to_pt(property[:coords][:x]).to_s %>" y="<%= pixle_to_pt(property[:coords][:y]).to_s %>"/>
+                  <a:ext cx="<%= pixle_to_pt(property[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(property[:coords][:cy]).to_s %>"/>
                 </a:xfrm>
                 <a:prstGeom prst="rect">
                   <a:avLst/>
                 </a:prstGeom>
               </p:spPr>
-            <% elsif coords.any? && !image[:coords].present?%>
+            <% elsif coords.any? && !property[:coords].present?%>
               <p:spPr>
                 <a:xfrm>
                   <a:off x="<%= coords[:x].to_s %>" y="<%= coords[:y].to_s %>"/>
@@ -88,7 +88,7 @@
             <p:spPr/>
             <% end %>
           </p:pic>
-        <%elsif image[:type] == 'title'%>
+        <%elsif property[:type] == 'title'%>
           <p:sp>
             <p:nvSpPr>
               <p:cNvPr id="3" name="Subtitle 2"/>
@@ -106,24 +106,24 @@
               <a:p>
                 <a:r>
                   <a:rPr lang="en-US" smtClean="0"/>
-                  <a:t><%= image[:content] %></a:t>
+                  <a:t><%= property[:content] %></a:t>
                 </a:r>
                 <a:endParaRPr lang="en-US"/>
               </a:p>
             </p:txBody>
           </p:sp>
-        <%elsif image[:type]== 'text'%>
+        <%elsif property[:type]== 'text'%>
           <p:sp>
             <p:nvSpPr>
               <p:cNvPr id="5<%=index%>" />
               <p:cNvSpPr txBox="1"/>
               <p:nvPr/>
             </p:nvSpPr>
-              <%if image[:coords].present? %>
+              <%if property[:coords].present? %>
                 <p:spPr>
                   <a:xfrm>
-                    <a:off x="<%= pixle_to_pt(image[:coords][:x]).to_s %>" y="<%= pixle_to_pt(image[:coords][:y]).to_s %>"/>
-                    <a:ext cx="<%= pixle_to_pt(image[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(image[:coords][:cy]).to_s %>"/>
+                    <a:off x="<%= pixle_to_pt(property[:coords][:x]).to_s %>" y="<%= pixle_to_pt(property[:coords][:y]).to_s %>"/>
+                    <a:ext cx="<%= pixle_to_pt(property[:coords][:cx]).to_s %>" cy="<%= pixle_to_pt(property[:coords][:cy]).to_s %>"/>
                   </a:xfrm>
                   <a:prstGeom prst="rect">
                     <a:avLst/>
@@ -146,15 +146,15 @@
               </a:bodyPr>
               <a:lstStyle/>
             <a:p>
-              <a:pPr algn="<%=image[:align].present? ? image[:align] == 'center' ? 'ctr' : image[:align] == 'right' ? 'r' : 'l' : 'ctr' %>"/>
+              <a:pPr algn="<%=property[:align].present? ? property[:align] == 'center' ? 'ctr' : property[:align] == 'right' ? 'r' : 'l' : 'ctr' %>"/>
               <a:r>
-                <a:rPr dirty="0" b="<%=image[:bold] ? 1 : 0%>" i="<%=image[:italic] ? 1 : 0%>" lang="en-US" smtClean="0" sz="<%= image[:size].present? ? image[:size] * 100 : 1600%>">
+                <a:rPr dirty="0" b="<%=property[:bold] ? 1 : 0%>" i="<%=property[:italic] ? 1 : 0%>" lang="en-US" smtClean="0" sz="<%= property[:size].present? ? property[:size] * 100 : 1600%>">
                 <a:solidFill>
                     <a:schemeClr val="dk2" />
                   </a:solidFill>
-                  <a:latin typeface="<%=image[:font].present? ? image[:font] : 'Arial' %>" pitchFamily="2" charset="77"/>
+                  <a:latin typeface="<%=property[:font].present? ? property[:font] : 'Arial' %>" pitchFamily="2" charset="77"/>
                 </a:rPr>
-                <a:t><%= image[:content] %></a:t>
+                <a:t><%= property[:content] %></a:t>
               </a:r>
             </a:p>
             </p:txBody>
