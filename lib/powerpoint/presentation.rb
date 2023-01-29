@@ -68,8 +68,8 @@ module Powerpoint
       @slides << Powerpoint::Slide::Collage.new(presentation: self, title: title, subtitle: subtitle, page_number: page_number, logo: logo, task_icon: task_icon, image_information: image_information, images: images)
     end
 
-    def add_image_slide(title, subtitle = nil,images)
-      @slides << Powerpoint::Slide::Image.new(presentation: self, title: title, subtitle: subtitle, images: images)
+    def add_custom_slide(title, subtitle = nil, properties)
+      @slides << Powerpoint::Slide::Custom.new(presentation: self, title: title, subtitle: subtitle, properties: properties)
     end
 
     def add_dashboard_slide(title, subtitle = nil, page_number, graph_1_title, graph_1_subtitle, graph_2_title, image_1, image_2, image_3, image_4, logo, data)
