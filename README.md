@@ -55,6 +55,22 @@ coords = {x: 124200, y: 3356451, cx: 2895600, cy: 1013460}
 # Saving the pptx file to the current directory.
 @deck.save('test.pptx')
 ```
+
+## Custom Pdf
+```
+@deck = Powerpoint::Presentation.new
+
+# Creating an Custom slide:
+title = 'Bicycle Of the Mind'
+subtitle = 'created by Steve Jobs'
+components = [
+    {type: "image", title: "image 2", file_path: '/path', coords: {x: 750, y: 0, cx: 50, cy: 50}}, 
+    {type: "text", content: "It Is My Text", size: 14, bold: true, align: 'right', font: "Snell Roundhand"},
+    ]
+# Creating a Custom slide text, image every thing can be configurable:
+@deck.add_add_custom_slide title, subtitle, components
+@deck.save('test.pptx')
+```
   
 ## Compatibility
 
