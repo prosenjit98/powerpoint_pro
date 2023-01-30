@@ -56,7 +56,7 @@ coords = {x: 124200, y: 3356451, cx: 2895600, cy: 1013460}
 @deck.save('test.pptx')
 ```
 
-## Custom Pdf
+## Custom Slide
 ```
 @deck = Powerpoint::Presentation.new
 
