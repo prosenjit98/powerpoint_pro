@@ -9,11 +9,11 @@
 
 'powerpoint' can be used from the command line or as part of a Ruby web framework. To install the gem using terminal, run the following command:
 
-    gem install powerpoint
+    gem install "powerpoint-pro"
 
 To use it in Rails, add this line to your Gemfile:
 
-    gem "powerpoint"
+    gem "powerpoint-pro"
 
 
 ## Basic Usage
@@ -57,7 +57,7 @@ coords = {x: 124200, y: 3356451, cx: 2895600, cy: 1013460}
 ```
 
 ## Custom Slide
-```
+```ruby
 @deck = Powerpoint::Presentation.new
 
 # Creating an Custom slide:
