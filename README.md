@@ -1,13 +1,13 @@
 [![version](https://badge.fury.io/rb/powerpoint.svg)](https://badge.fury.io/rb/powerpointk)
 [![downloads](https://ruby-gem-downloads-badge.herokuapp.com/powerpoint?type=total&total_label=downloads)](https://ruby-gem-downloads-badge.herokuapp.com/powerpoint?type=total&total_label=downloads)
 
-# 'powerpoint' gem -- for creating PowerPoint Slides in Ruby.
+# 'powerpoint-pro' gem -- for creating PowerPoint Slides in Ruby.
 
-'powerpoint' is a Ruby gem that can generate PowerPoint files(pptx).
+'powerpoint-pro' is a Ruby gem that can generate PowerPoint files(pptx).
 
 ## Installation
 
-'powerpoint' can be used from the command line or as part of a Ruby web framework. To install the gem using terminal, run the following command:
+'powerpoint-pro' can be used from the command line or as part of a Ruby web framework. To install the gem using terminal, run the following command:
 
     gem install "powerpoint-pro"
 
@@ -18,7 +18,7 @@ To use it in Rails, add this line to your Gemfile:
 
 ## Basic Usage
 
-'powerpoint' gem can generate a PowerPoint presentaion based on a standard template:
+'powerpoint-pro' gem can generate a PowerPoint presentaion based on a standard template:
 
 ```ruby
 require 'powerpoint'
@@ -74,7 +74,7 @@ components = [
   
 ## Compatibility
 
-'powerpoint' gem has been tested with LibreOffice (4.2.1.1) and Apache OpenOffice (4.0.1) on Mac OS X Mavericks, Microsoft PowerPoint 2010 on Windows 7 and Google Docs (latest version as of March 2014).
+'powerpoint-pro' gem has been tested with LibreOffice (4.2.1.1) and Apache OpenOffice (4.0.1) on Mac OS X Mavericks, Microsoft PowerPoint 2010 on Windows 7 and Google Docs (latest version as of Jan 2023).
 
 ## Contributing
 
@@ -92,8 +92,8 @@ Once this is complete, you should be able to run the test suite:
 
 ## Bug Reporting
 
-Please use the [Issues](https://github.com/pythonicrubyist/powerpoint/issues) page to report bugs or suggest new enhancements.
+Please use the [Issues](https://github.com/prosenjit98/powerpoint_pro/issues) page to report bugs or suggest new enhancements.
 
 ## License
 
-Powerpoint has been published under [MIT License](https://github.com/pythonicrubyist/powerpoint/blob/master/LICENSE.txt)
+Powerpoint has been published under [MIT License](https://github.com/prosenjit98/powerpoint_pro/blob/master/LICENSE.txt)
