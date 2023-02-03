@@ -68,7 +68,7 @@ components = [
     {type: "text", content: "It Is My Text", size: 14, bold: true, align: 'right', font: "Snell Roundhand"},
     ]
 # Creating a Custom slide text, image every thing can be configurable:
-@deck.add_add_custom_slide title, subtitle, components
+@deck.add_custom_slide title, subtitle, components
 @deck.save('test.pptx')
 ```
   
