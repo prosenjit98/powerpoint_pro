@@ -3,7 +3,7 @@
 
 # 'powerpoint-pro' gem -- for creating PowerPoint Slides in Ruby.
 
-'powerpoint-pro' is a Ruby gem that can generate PowerPoint files(pptx).
+'powerpoint-pro' is a Ruby gem that can generate PowerPoint files(pptx). This is forked from main powerpoint gem. I having extra functionality of multiple images and text into the same slide with control of positioning. Your can use "add_custom_slide" for custom slide.
 
 ## Installation
 
@@ -18,7 +18,7 @@ To use it in Rails, add this line to your Gemfile:
 
 ## Basic Usage
 
-'powerpoint-pro' gem can generate a PowerPoint presentaion based on a standard template:
+'powerpoint-pro' gem can generate a PowerPoint presentation based on a standard template:
 
 ```ruby
 require 'powerpoint'
